@@ -55,9 +55,12 @@
                 p
                   | 一九年初辞去济南的工作，来到上海入职一家创业公司，开启沪漂之路。
                 p.text-center
-                  a.btn.btn-primary(href='#')
+                  a.btn.btn-success(:href='dynamicBase + "v1/resumes/download"', target='_blank')
                     i.fa.fa-download
-                    |  下载我的简历
+                    |  简历下载
+                  a.btn.btn-primary.ml-3(:href='dynamicBase + "v1/resumes/view"', target='_blank')
+                    i.fa.el-icon-view
+                    |  简历预览
       // Services Section
       #services.text-center
         .container
@@ -300,27 +303,31 @@
       #achievements.section.dark-bg
         .container
           .section-title.center.text-center
-            h2 我的代码库
+            h2 我的github/代码库
             hr
           .row
-            .col-md-4.col-sm-3
+            .col-md-6.col-sm-3
               .achievement-box
                 i.fa.fa-code
                 span.count
-                  a.count(src="https://github.com/sdjnlh/") github
-            .col-md-4.col-sm-3
+                  a.count(href="https://github.com/sdjnlh/",target='_black') github
+                p.mt-2 https://github.com/sdjnlh/
+            .col-md-6.col-sm-3
               .achievement-box
                   i.fa.fa-code
                   span.count
-                      a.count(src="http://code.lncios.cn/") 个人代码库
+                    a.count(href="http://code.lncios.cn/",target='_black') 个人代码库
+                  p.mt-2 http://code.lncios.cn
       // Testimonials Section
       #testimonials.text-center
         .container
           .section-title.center
             h2 自我介绍
             hr
-          .row
-
+          //.row
+            el-carousel(interval="4000",type="card" height="400px")
+              el-carousel-item(v-for='item in pics',:key='item.url')
+                img(:src='item.url')
       // Contact Section
       #contact.text-center
         .container
@@ -330,18 +337,21 @@
             p
               | 谢谢您看到了这里，如有意向请打电话给我，或者留言，本人将第一时间回复
           .col-md-8.col-md-offset-2
-            .col-md-4
+            .col-md-3
               i.fa.fa-map-marker.fa-2x
               p
                 | 上海市闵行区古美西路899弄
                 br
                 |           鸿发家园
-            .col-md-4
+            .col-md-3
               i.fa.fa-envelope-o.fa-2x
               p jnsdlh@outlook.com
-            .col-md-4
+            .col-md-3
               i.fa.fa-phone.fa-2x
               p  15853196797
+            .col-md-3
+              i.fa.fa-wechat.fa-2x
+              p  LH55954
             hr
             .clearfix
           .col-md-8.col-md-offset-2
@@ -373,6 +383,17 @@
 <script>
 export default {
   name: "Index",
+  data() {
+    return {
+      dynamicBase: process.env.VUE_APP_API_BASE,
+      pics: [
+        {url: require("../../img/graduation-logo.jpg")},
+        {url: require("../../img/index-logo.jpg")},
+        {url: require("../../img/index-logo-2.jpg")},
+        {url: require("../../img/frist.jpg")}
+      ]
+    }
+  },
   created() {}
 };
 </script>

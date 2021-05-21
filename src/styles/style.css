@@ -740,23 +740,24 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 .intro .intro-body .intro-text {
 	float: left;
-	text-align: right;
+	/* text-align: right; */
 	max-width: 75%;
 }
 .intro .intro-body .intro-text p {
 	font-family: 'Lato', sans-serif;
 	font-size: 20px;
 	margin-bottom: 40px;
-  color: #2c3e50;
+  	color:#ffffff;
 	margin-top: 20px;
 }
 section {
 	padding: 120px 0;
 }
 header .intro-text {
-	padding-top: 50px;
+	/* padding-top: 50px; */
 	padding-bottom: 300px;
-  padding-left: 350px;
+  	padding-left: 350px;
+  	margin-left: -400px;
 }
 #portfolio .portfolio-item {
 	margin: 0 0 30px;
