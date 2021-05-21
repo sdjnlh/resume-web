@@ -47,7 +47,7 @@
             hr
           .row
             .col-md-12.text-center
-              img.img-responsive(src='../../img/about.jpg')
+              img.img-responsive(src='../../img/graduation-logo.jpg')
             .col-md-8.col-md-offset-2
               .about-text
                 p
@@ -371,14 +371,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'Index',
-    created () {
-    }
-
-  }
+export default {
+  name: "Index",
+  created() {}
+};
 </script>
 
 <style scoped>
-
 </style>
