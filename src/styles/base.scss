@@ -1,0 +1,259 @@
+@import 'variables.scss';
+@import 'typography.scss';
+
+$border-solid-grey: solid $color-grey-lighten-2;
+$border-solid-black: solid $color-black-lighten-2;
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family-base;
+  font-size: $main-font-size;
+  -webkit-font-smoothing: antialiased;
+  background-color: RGBA(220, 220, 220, 0.2);
+}
+.page-dark {
+  background-color: $page-dark;
+}
+.text-blue {
+  color: $color-primary;
+}
+#app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+button:focus {
+  outline: 0;
+}
+
+a.primary,
+.text-theme {
+  color: $color-primary;
+}
+
+.bg-white {
+  background: #ffffff;
+}
+
+.bg-light-gray {
+  background: #f5f5f5;
+}
+
+.text-red {
+  color: #e51c23;
+}
+
+.text-light {
+  color: #ccc !important;
+}
+
+.text-dark {
+  color: #666 !important;
+}
+
+.divider {
+  height: 1px;
+}
+
+.panel {
+  border: 1px solid $color-grey-lighten-2;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel-md {
+  max-width: 800px;
+}
+
+.radius-sm {
+  border-radius: 2px;
+}
+
+.border-right {
+  border-right: 1px $border-solid-grey;
+}
+
+.border-bottom {
+  border-bottom: 1px $border-solid-grey;
+}
+
+.border-black {
+  border: 1px $border-solid-black;
+}
+.border-bb {
+  border-bottom: 1px $border-solid-black;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+}
+
+.input-tiny {
+  width: 80px;
+}
+
+.input-md {
+  width: 160px;
+}
+
+.input-lg {
+  width: 240px;
+}
+
+.label {
+  color: #999;
+  display: inline-block;
+  text-align: right;
+}
+
+.label-sm {
+  width: 50px;
+  padding-right: 8px;
+}
+
+.label-md {
+  width: 80px;
+  padding-right: 8px;
+}
+.label-middle {
+  width: 100px;
+  padding-right: 8px;
+}
+.label-lg {
+  width: 120px;
+  padding-right: 8px;
+}
+.label-xl {
+  width: 160px;
+  padding-right: 8px;
+}
+.label-xxl {
+  width: 180px;
+  padding-right: 8px;
+}
+
+.label-left {
+  width: 100px;
+  display: inline-block;
+  text-align: left;
+}
+.fa-csdn-o{
+
+  background-image: url(../img/frist3.jpg);
+}
+.display-5 {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  line-height: 1.1;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.circle-lg {
+  width: 20px;
+  height: 20px;
+}
+
+.circle-md {
+  width: 15px;
+  height: 15px;
+}
+
+.circle-sm {
+  width: 10px;
+  height: 10px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.text-wrap {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.bg-main {
+  background-color: #f9fbfc;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.tabtitle {
+  background: #ebebeb;
+}
+
+.table-bordered td,
+.table-bordered th {
+  padding: 5px !important;
+}
+
+table td,
+table th {
+  padding: 5px !important;
+}
+
+//居中
+.absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.text-bg {
+  background-color: $color-primary;
+}
+.fill-white {
+  fill: #ffffff !important;
+}
+
+.app-breadcrumb.el-breadcrumb {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 50px;
+  margin-left: 10px;
+  .no-redirect {
+    color: #97a8be;
+    cursor: text;
+  }
+}
+.list-none {
+  list-style: none !important;
+  padding-inline-start: 30px !important;
+}
+
+.login {
+  width: 530px;
+  height: 520px;
+  background: url('../static/loginpic.png') 100% no-repeat;
+  background-size: contain;
+}
+
+.logo {
+  width: 121px;
+  height: 61px;
+  background: url('../static/logo.png') no-repeat 50%;
+  background-size: contain;
+}

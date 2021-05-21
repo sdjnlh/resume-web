@@ -1,0 +1,89 @@
+@import 'variables.scss';
+
+.el-button--primary-outline {
+  color: $color-primary;
+  background-color: #ffffff;
+  border-color: $color-primary;
+}
+
+.el-button--primary-outline:focus,
+.el-button--primary-outline:hover {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: #fff;
+}
+
+.el-button--primary-outline.stepStatus,
+.el-button--primary-outline:active {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: #fff;
+}
+
+.el-button--primary-outline:active {
+  outline: 0;
+}
+
+.el-button--primary-outline.is-plain {
+  background: #fff;
+  border: 1px solid rgb(191, 203, 217);
+  color: rgb(31, 45, 61);
+}
+
+.el-button--primary-outline.is-plain:focus,
+.el-button--primary-outline.is-plain:hover {
+  background: #fff;
+  border-color: $color-primary;
+  color: $color-primary;
+}
+
+.el-button--primary-outline.is-plain:active {
+  background: #fff;
+  border-color: $color-primary;
+  color: $color-primary;
+  outline: 0;
+}
+
+.el-button--danger-outline {
+  color: $color-danger;
+  background-color: #ffffff;
+  border-color: $color-danger;
+}
+
+.el-button--danger-outline:focus,
+.el-button--danger-outline:hover {
+  background: $color-danger;
+  border-color: $color-danger;
+  color: #fff;
+}
+
+.el-button--danger-outline.stepStatus,
+.el-button--danger-outline:active {
+  background: $color-danger;
+  border-color: $color-danger;
+  color: #fff;
+}
+
+.el-button--danger-outline:active {
+  outline: 0;
+}
+
+.el-button--danger-outline.is-plain {
+  background: #fff;
+  border: 1px solid rgb(191, 203, 217);
+  color: rgb(31, 45, 61);
+}
+
+.el-button--danger-outline.is-plain:focus,
+.el-button--danger-outline.is-plain:hover {
+  background: #fff;
+  border-color: $color-danger;
+  color: $color-danger;
+}
+
+.el-button--danger-outline.is-plain:active {
+  background: #fff;
+  border-color: $color-danger;
+  color: $color-danger;
+  outline: 0;
+}

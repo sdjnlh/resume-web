@@ -1,0 +1,215 @@
+//to reset element-ui default css
+.el-upload {
+  input[type='file'] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+//element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+.el-menu--horizontal > .el-menu-item {
+  float: left;
+  height: 80px;
+  line-height: 80px;
+  margin: 0;
+  border-bottom: 2px solid transparent;
+  color: #909399;
+}
+
+.el-menu--horizontal > .el-submenu .el-submenu__title {
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 2px solid transparent;
+  color: #909399;
+}
+
+.el-menu--horizontal {
+  border-right: none;
+  border-bottom: solid 0 #e6e6e6;
+}
+
+//.el-tabs__nav-wrap,
+//el-tab {
+//  background-color: #ffffff;
+//}
+
+//.el-tabs__nav-wrap.is-top {
+//  padding-left: 50px;
+//}
+
+.el-table__footer-wrapper .cell {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.el-checkbox + .el-checkbox {
+  margin-left: 0;
+}
+
+//多选框
+label {
+  margin-bottom: 0px;
+}
+
+.el-badge {
+  height: 20px;
+}
+
+//评分
+.el-badge__content {
+  background-color: #bcdd8c;
+  color: #9c74a9;
+  display: inline-block;
+  font-size: 14px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  line-height: 30px;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid #fff;
+}
+
+////table 单元格间距
+.tableSpacing .el-table .cell,
+.el-table th div {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.tableSpacing .el-table--border td:first-child .cell,
+.el-table--border th:first-child .cell {
+  padding-left: 0px;
+}
+
+//checkbox 换行
+.el-checkbox,
+.el-checkbox__input {
+  display: inline-block;
+  position: relative;
+  white-space: normal !important;
+}
+.title-mobile .el-step__title {
+  font-size: 10px !important;
+}
+.el-table .cell, .el-table th div {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+}
+
+//.el-form-item__label {
+//  text-align: left !important;
+//}
+
+.dialog .el-form-item {
+  margin-bottom: 0px !important;
+}
+.form-label .el-form-item__label {
+  line-height: 25px !important;
+}
+
+.el-input-group__append, .el-input-group__prepend {
+  background-color: #9775AE !important;
+  color: #ffffff !important;
+}
+
+.artCycle.el-table th div {
+  line-height: 20px !important
+}
+
+
+.radio-2 .el-radio {
+  margin-left: 2px !important;
+  margin-right: 2px !important;
+}
+
+
+.login-inner .el-input__inner {
+  &::placeholder {
+    color: #666666 !important;
+  }
+}
+
+.btn-select {
+  //background-color: #9775AE !important;
+  border: 1px solid #9775AE !important;
+  color: #9775AE !important;
+}
+
+
+.event-tab {
+  .el-table__header tr,
+  .el-table__header th {
+    padding: 0 !important;
+    height: 30px !important;
+    line-height: 30px !important;
+  }
+  .el-table__body tr,
+  .el-table__body td {
+    padding: 0 !important;
+    height: 30px !important;
+    line-height: 30px !important;
+  }
+}
+
+.dark-header .el-collapse-item__header {
+  background-color: #9775ae !important;
+  color: #ffffff !important;
+  padding:10px !important;
+  font-size: 16px !important;
+}
+.dark-header .el-radio+.el-radio {
+  margin-left: 0px !important;
+}
+.step-333 {
+  .el-step__title.is-wait {
+    color: #333333 !important;
+  }
+
+  .el-step__description.is-wait {
+    color: #333333 !important;
+
+  }
+}
+
+
+
+.dialog-center .el-dialog{
+  display: flex;
+  flex-direction: column;
+  margin:0 !important;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  /*height:600px;*/
+  max-height:calc(100% - 30px);
+  max-width:calc(100% - 30px);
+}
+.dialog-center .el-dialog .el-dialog__body {
+  flex: 1;
+  overflow: auto;
+
+}
