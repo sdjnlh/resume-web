@@ -289,7 +289,7 @@
             hr
             .clearfix
           .col-md-8.col-md-offset-2
-            h3 发消息联系我(本消息直接发短息给我对接阿里大于)
+            h3 发消息联系我(本消息将对接阿里大于，待实现)
             form#contactForm(name='sentMessage', novalidate='')
               .row
                 .col-md-6
