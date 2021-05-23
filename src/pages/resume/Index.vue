@@ -103,94 +103,26 @@
               li
                 ol.type
                   li
-                    a.active(href='#', data-filter='*') 所有
+                    a(@click="loadProjects('')") 所有
                   li
-                    a(href='#', data-filter='.web') web项目
+                    a(@click="loadProjects('A')") web项目
                   li
-                    a(href='#', data-filter='.app') 小程序项目
+                    a(@click="loadProjects('B')") 小程序项目
+                  li
+                    a(@click="loadProjects('D')") 个人项目
             .clearfix
           .row
             .portfolio-items
-              .col-sm-6.col-md-3.col-lg-3.web
+              .col-sm-6.col-md-3.col-lg-3.web(v-for="project in projects")
                 .portfolio-item
                   .hover-bg
-                    a(href='../../img/portfolio/01.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small Web Design
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/01.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.app
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/02.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small App Development
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/02.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.web
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/03.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small Web Design
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/03.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.web
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/04.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small Web Design
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/04.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.app
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/05.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small App Development
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/05.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.branding
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/06.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small Branding
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/06.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.branding.app
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/07.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small App Development, Branding
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/07.jpg', alt='Project Title')
-              .col-sm-6.col-md-3.col-lg-3.web
-                .portfolio-item
-                  .hover-bg
-                    a(href='../../img/portfolio/08.jpg', title='Project description', rel='prettyPhoto')
-                      .hover-text
-                        h4 Project Title
-                        small Web Design
-                        .clearfix
-                        i.fa.fa-search
-                      img.img-responsive(src='../../img/portfolio/08.jpg', alt='Project Title')
+                    a(:href='project.coverImage', title='Project description', rel='prettyPhoto')
+                        .hover-text
+                            h4 {{project.name}}
+                            small {{project.title}}
+                            .clearfix
+                            i.fa.fa-search
+                        img.img-responsive(:src='project.coverImage', :alt='projects.title')
       // Skills Section
       //#skills.text-center
         .container
@@ -311,13 +243,15 @@
                 i.fa.fa-code
                 span.count
                   a.count(href="https://github.com/sdjnlh/",target='_black') github
-                p.mt-2 https://github.com/sdjnlh/
+                span
+                  h6 https://github.com/sdjnlh/
             .col-md-6.col-sm-3
               .achievement-box
                   i.fa.fa-code
                   span.count
                     a.count(href="http://code.lncios.cn/",target='_black') 个人代码库
-                  p.mt-2 http://code.lncios.cn
+                  span
+                    h6 http://code.lncios.cn
       // Testimonials Section
       #testimonials.text-center
         .container
@@ -381,6 +315,7 @@
 </template>
 
 <script>
+import API from '@/api/api'
 export default {
   name: "Index",
   data() {
@@ -391,10 +326,31 @@ export default {
         {url: require("../../img/index-logo.jpg")},
         {url: require("../../img/index-logo-2.jpg")},
         {url: require("../../img/frist.jpg")}
-      ]
+      ],
+      projects: [],
+      filter: {
+        k: ''
+      }
     }
   },
-  created() {}
+  created() {},
+  methods: {
+    loadProjects(all) {
+      this.projects = []
+      this.filter.k = all
+      API.project
+          .list(this.filter)
+          .then(res => {
+            this.projects = res.data.data
+            this.listLoading = true
+          })
+          .catch(function () {
+          })
+    }
+  },
+  mounted() {
+    this.loadProjects()
+  }
 };
 </script>
 
