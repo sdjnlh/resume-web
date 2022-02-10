@@ -9,9 +9,11 @@
                     el-input.w-50(v-model='domain.title',  placeholder="请输入主标题名称")
                 el-form-item(label='副标题:', prop='type')
                     el-input.w-50(v-model='domain.subTitle',  placeholder="请输入副标题名称")
-                el-form-item(label='项目类型:', prop='')
-                  el-checkbox-group(v-model='domain.kind' )
-                    el-checkbox(v-for="rg in types" :label="rg.label" :key="rg.label") {{rg.value}}
+                el-form-item(label='项目序号:', prop='no')
+                  el-input.w-50(v-model='domain.no',  placeholder="请输入项目编号")
+                el-form-item(label='项目类型:', prop='kind')
+                  el-select(placeholder='项目类型', v-model='domain.kind')
+                    el-option(:label='p.label', :value='p.value', v-for='p in types', :key='p.value') {{ p.label }}
                 el-form-item(label='项目简介:', prop='description')
                     el-input.w-50(v-model='domain.content', type='textarea' :rows='5' placeholder="")
                 el-form-item(label='项目图片:', prop='priority')
@@ -24,105 +26,99 @@
 </template>
 
 <script>
-import API from '@/api/api'
-import { regionData } from 'element-china-area-data'
-import dict from '@/utils/dict'
+import API from "@/api/api";
+import { regionData } from "element-china-area-data";
 export default {
-  name: 'PartnerForm',
+  name: "ResumeForm",
   data() {
     return {
-      traderTags:[],
+      traderTags: [],
       types: [
-            { label: 'A', value: '工商服务' },
-            { label: 'B', value: '财税服务' },
-            { label: 'C', value: '税筹服务' },
-            { label: 'D', value: '知识产权' },
-            { label: 'E', value: '法律服务' },
-            { label: 'F', value: '股权设计' }
-        ],
+        { value: "A", label: "web项目" },
+        { value: "B", label: "小程序项目" },
+        { value: "C", label: "个人项目" }
+      ],
       selectedOptions: [],
       regionData: regionData,
-      previewImage: '',
-      domain: { type: []},
+      previewImage: "",
+      domain: { type: [] },
       fileList: [],
-      uploadPath: 'http://127.0.0.1:3001/api/v1/file',
-      title: '添加项目',
-      id: '',
+      uploadPath: "http://127.0.0.1:3001/api/v1/file",
+      title: "添加项目",
+      id: "",
       imagePath: [],
       previewVisible: false,
-      rule: {
-      }
-    }
+      rule: {}
+    };
   },
   methods: {
     handleChange(file, fileList) {
-      this.fileList = fileList
-      if (file.status === 'success') {
-        let res = file.response
-        this.imagePath.push(res.prefixUri + res.relativePath)
+      this.fileList = fileList;
+      if (file.status === "success") {
+        let res = file.response;
+        this.imagePath.push(res.prefixUri + res.relativePath);
       }
     },
     handlePreview(file) {
-      this.previewImage = file.url || file.thumbUrl
-      this.previewVisible = true
+      this.previewImage = file.url || file.thumbUrl;
+      this.previewVisible = true;
     },
     loadPartner() {
-      API.project.get(this.id).then(res => {
-          this.domain = res.data
+      API.project
+        .get(this.id)
+        .then(res => {
+          this.domain = res.data;
           if (res.data.coverImage) {
-              let image = {
-                uid: '-1',
-                name: 'xxx.png',
-                status: 'done',
-                url: res.data.coverImage,
-                thumbUrl: res.data.coverImage
-              }
-              this.fileList.push(image)
+            let image = {
+              uid: "-1",
+              name: "xxx.png",
+              status: "done",
+              url: res.data.coverImage,
+              thumbUrl: res.data.coverImage
+            };
+            this.fileList.push(image);
           }
         })
-        .catch(err => {
-        })
+        .catch(() => {});
     },
     handleSave() {
       this.$refs.form.validate(valid => {
         if (!valid) {
-          return
+          return;
         }
-        this.domain.coverImage = this.imagePath[0]
-        var api = this.domain.id ? API.project.update : API.project.create
+        this.domain.coverImage = this.imagePath[0];
+        var api = this.domain.id ? API.project.update : API.project.create;
         api(this.domain)
           .then(res => {
             // this.domain = res.data
-            this.$message.success('保存成功!')
-            this.$router.replace('/project/home')
+            this.$message.success("保存成功!");
+            this.$router.replace("/project/home");
           })
-          .catch(err => {
-            this.$message.error('保存失败!')
-          })
-      })
+          .catch(() => {
+            this.$message.error("保存失败!");
+          });
+      });
     },
     handleCancel() {
-      this.$router.push('/project/home')
+      this.$router.push("/project/home");
     },
     reback(data, text) {
-      console.log(text)
-      console.log(data)
       //switch 不行
-      if (text === 'traderTag') {
-        this.traderTags= data
+      if (text === "traderTag") {
+        this.traderTags = data;
       }
     }
   },
   mounted() {
-    dict.filterDict('traderTag', this.reback)
+    // dict.filterDict("traderTag", this.reback);
     if (this.$route.query.id) {
-      this.id = this.$route.query.id
-      if (this.id !== '') {
-        this.loadPartner()
+      this.id = this.$route.query.id;
+      if (this.id !== "") {
+        this.loadPartner();
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>

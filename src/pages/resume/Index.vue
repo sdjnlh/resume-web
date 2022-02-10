@@ -9,8 +9,8 @@
               .intro-text
                 h1 你好, 我是李皓
                 p 后端工程师 & 大学本科（软件工程，统招，学信网可查）
-                a.btn.btn-default.btn-lg.page-scroll(href='#about') 关于我
-                a.btn.btn-default.btn-lg.page-scroll(href='#portfolio') 我的项目经验
+                //- a.btn.btn-default.btn-lg.page-scroll(href='#about') 关于我
+                //- a.btn.btn-default.btn-lg.page-scroll(href='#portfolio') 我的项目经验
       // Navigation
       #nav
         nav.navbar.navbar-custom
@@ -109,14 +109,14 @@
                   li
                     a(@click="loadProjects('B')") 小程序项目
                   li
-                    a(@click="loadProjects('D')") 个人项目
+                    a(@click="loadProjects('C')") 个人项目
             .clearfix
           .row
             .portfolio-items
               .col-sm-6.col-md-3.col-lg-3.web(v-for="project in projects")
                 .portfolio-item
                   .hover-bg
-                    a(:href='project.coverImage', title='Project description', rel='prettyPhoto')
+                    a(:href='project.coverImage', :title='project.content', rel='prettyPhoto')
                         .hover-text
                             h4 {{project.name}}
                             small {{project.title}}
@@ -258,6 +258,11 @@
           .section-title.center
             h2 自我介绍
             hr
+          .row
+            .col-md-8.col-md-offset-2
+              #testimonial.owl-carousel.owl-theme
+                p 别说什么全栈工程师，哪些事在某一个领域精通后的横向拓展而已！
+                  p 热衷于技术，不甘于平庸，熟悉golang，Java，消息编程，tcp,mqtt协议，熟悉vue框架，小程序开发。
           //.row
             el-carousel(interval="4000",type="card" height="400px")
               el-carousel-item(v-for='item in pics',:key='item.url')
@@ -274,9 +279,9 @@
             .col-md-3
               i.fa.fa-map-marker.fa-2x
               p
-                | 上海市闵行区古美西路899弄
+                | 山东省济南市历城区
                 br
-                |           鸿发家园
+                |           闵子骞路13号
             .col-md-3
               i.fa.fa-envelope-o.fa-2x
               p jnsdlh@outlook.com
@@ -288,7 +293,7 @@
               p  LH55954
             hr
             .clearfix
-          .col-md-8.col-md-offset-2
+          //.col-md-8.col-md-offset-2
             h3 发消息联系我(本消息将对接阿里大于，待实现)
             form#contactForm(name='sentMessage', novalidate='')
               .row
@@ -315,41 +320,40 @@
 </template>
 
 <script>
-import API from '@/api/api'
+import API from "@/api/api";
 export default {
   name: "Index",
   data() {
     return {
       dynamicBase: process.env.VUE_APP_API_BASE,
       pics: [
-        {url: require("../../img/graduation-logo.jpg")},
-        {url: require("../../img/index-logo.jpg")},
-        {url: require("../../img/index-logo-2.jpg")},
-        {url: require("../../img/frist.jpg")}
+        { url: require("../../img/graduation-logo.jpg") },
+        { url: require("../../img/index-logo.jpg") },
+        { url: require("../../img/index-logo-2.jpg") },
+        { url: require("../../img/frist.jpg") }
       ],
       projects: [],
       filter: {
-        k: ''
+        k: ""
       }
-    }
+    };
   },
   created() {},
   methods: {
     loadProjects(all) {
-      this.projects = []
-      this.filter.k = all
+      this.projects = [];
+      this.filter.k = all;
       API.project
-          .list(this.filter)
-          .then(res => {
-            this.projects = res.data.data
-            this.listLoading = true
-          })
-          .catch(function () {
-          })
+        .list(this.filter)
+        .then(res => {
+          this.projects = res.data.data;
+          this.listLoading = true;
+        })
+        .catch(function() {});
     }
   },
   mounted() {
-    this.loadProjects()
+    this.loadProjects();
   }
 };
 </script>

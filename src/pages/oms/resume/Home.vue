@@ -143,7 +143,6 @@ export default {
       API.resume
         .list(this.filter)
         .then(res => {
-            debugger
           this.domains = res.data.data
           this.listLoading = true
           this.pager.count = parseInt(res.data.page.cnt)

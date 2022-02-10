@@ -22,8 +22,6 @@ const user = {
 
   mutations: {
     SET_ROLES: (state, roles) => {
-        debugger
-      console.log('roles', JSON.stringify(roles))
       let permissions = {}
       if (roles) {
         for (let i = 0; i < roles.length; i++) {
@@ -36,7 +34,6 @@ const user = {
       }
       state.roles = roles || []
       state.permissions = Object.keys(permissions) || []
-      console.log('state.permissions', JSON.stringify(state.permissions))
       state.permissionsLoaded = true
     },
     SET_TOKEN: (state, token) => {
@@ -56,7 +53,6 @@ const user = {
       state.name = name
     },
     SET_PERMISSIONS: (state, permissions) => {
-      console.log('set permissions', permissions)
       state.permissions = permissions
       state.permissionsLoaded = true
     }
@@ -65,14 +61,11 @@ const user = {
   actions: {
     // 登录
     Login({ commit, state, rootState }, userInfo) {
-      console.log('login begin')
       return new Promise((resolve, reject) => {
         API.app
           .login(userInfo)
           .then(response => {
-           debugger
             let user = response.data
-            console.log('login user', user)
             setUserName(user.username)
             setUid(user.id)
             Cookies.set('userMobile', user.mobile)
@@ -80,8 +73,6 @@ const user = {
             resolve()
           })
           .catch(error => {
-            console.log('login err response:', error.response)
-            console.log('login err:', error)
             reject(error)
           })
       })
@@ -92,7 +83,6 @@ const user = {
         API.app
           .getInfo()
           .then(res => {
-            debugger
             let user = res.data
             // commit('SET_PERMISSIONS', user.permissions || [])
             commit('SET_USER', user)
@@ -100,7 +90,6 @@ const user = {
             resolve(state.permissions)
           })
           .catch(err => {
-            console.log('go rights err', err)
             reject(err)
           })
       })
